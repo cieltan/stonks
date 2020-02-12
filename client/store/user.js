@@ -51,17 +51,17 @@ export const auth = (
 
   try {
     dispatch(getUser(res.data));
-    navigate("portfolio");
+    navigate("/");
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
   }
 };
 
-export const logout = () => async dispatch => {
+export const logoutThunk = () => async dispatch => {
   try {
     await axios.post("/auth/logout");
     dispatch(removeUser());
-    navigate("/");
+    navigate("/login");
   } catch (err) {
     console.error(err);
   }
