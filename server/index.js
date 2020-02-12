@@ -7,6 +7,7 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const db = require("./db");
 const auth = require("./auth");
+const api = require("./api");
 
 const sessionStore = new SequelizeStore({ db });
 const PORT = process.env.PORT || 8080;
@@ -42,6 +43,7 @@ const createApp = () => {
   app.use(passport.session());
 
   app.use("/auth", auth);
+  app.use("/api", api);
 
   app.use(express.static(path.join(__dirname, "..", "public")));
 
