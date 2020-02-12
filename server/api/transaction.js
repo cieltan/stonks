@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const Holdings = require("../db/models/holdings");
+const Transactions = require("../db/models/transactions");
 
 router.get("/:userId", async (req, res, next) => {
   try {
     const { userId } = req.params;
-    const allHoldings = await Holdings.findAll({ where: { userId } });
-    res.json(allHoldings);
+    const allTransactions = await Transactions.findAll({ where: { userId } });
+    res.json(allTransactions);
   } catch (error) {
     next(error);
   }
