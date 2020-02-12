@@ -1,5 +1,5 @@
 import axios from "axios";
-import { navigate } from "@reach/router";
+import { navigate } from "../history";
 
 /**
  * ACTION TYPES
@@ -51,7 +51,7 @@ export const auth = (
 
   try {
     dispatch(getUser(res.data));
-    navigate("/portfolio");
+    navigate("portfolio");
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
   }
@@ -73,7 +73,7 @@ export const logout = () => async dispatch => {
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return action.user;
+      return action.payload;
     case REMOVE_USER:
       return defaultUser;
     default:
