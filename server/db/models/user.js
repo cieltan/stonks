@@ -1,6 +1,8 @@
-const bcrypt = require("bcrypt");
 const Sequelize = require("sequelize");
+const bcrypt = require("bcrypt");
 const db = require("../db");
+
+const saltRounds = 10;
 
 const User = db.define("user", {
   firstName: {
@@ -25,12 +27,6 @@ const User = db.define("user", {
     get() {
       return () => this.getDataValue("password");
     }
-  },
-  salt: {
-    type: Sequelize.STRING,
-    get() {
-      return () => this.getDataValue("salt");
-    }
   }
 });
 
@@ -40,21 +36,16 @@ module.exports = User;
  * instanceMethods
  */
 User.prototype.correctPassword = async function(candidatePwd) {
-  const match = await bcrypt.compare(candidatePwd, this.getSalt());
-  return match === this.password();
+  const match = await bcrypt.compare(candidatePwd, this.password());
+  return match;
 };
 
 /**
  * classMethods
  */
-User.generateSalt = async function() {
-  const salt = await bcrypt.genSalt();
-  return salt;
-};
 
-User.encryptPassword = async function(plainText, salt) {
-  const secured = await bcrypt.hash(plainText, salt);
-  return secured;
+User.encryptPassword = function(plainText, salt) {
+  return bcrypt.hash(plainText, salt);
 };
 
 /**
@@ -63,8 +54,7 @@ User.encryptPassword = async function(plainText, salt) {
 const setSaltAndPassword = async user => {
   const newUser = user;
   if (newUser.changed("password")) {
-    newUser.salt = await User.generateSalt();
-    newUser.password = await User.encryptPassword(user.password(), user.salt());
+    newUser.password = await User.encryptPassword(user.password(), saltRounds);
   }
 };
 

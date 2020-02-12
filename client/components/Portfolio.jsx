@@ -1,13 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "@reach/router";
 import { logout } from "../store/user";
 
 const Portfolio = props => {
   return (
-    <button type="button" onClick={() => props.logout()}>
-      Hello!
-    </button>
+    <div>
+      <nav>
+        <Link to="../transactions">Transactions</Link>
+      </nav>
+      <button type="button" onClick={() => props.logout()}>
+        Hello!
+      </button>
+    </div>
   );
 };
 

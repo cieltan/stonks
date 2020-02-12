@@ -32,7 +32,7 @@ const createApp = () => {
   // session middleware with passport
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || "This is not a good secret.",
+      secret: process.env.SESSION_SECRET || "This is not a good secret",
       store: sessionStore,
       resave: false,
       saveUninitialized: false
@@ -41,7 +41,6 @@ const createApp = () => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // auth and api routes
   app.use("/auth", auth);
 
   app.use(express.static(path.join(__dirname, "..", "public")));
