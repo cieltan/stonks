@@ -40,7 +40,6 @@ User.generateSalt = async function() {
 };
 
 User.encryptPassword = async function(plainText, salt) {
-  console.log("plain", salt);
   const secured = await bcrypt.hash(plainText, salt);
   return secured;
 };
