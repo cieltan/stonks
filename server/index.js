@@ -4,6 +4,7 @@ const path = require("path");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+require("dotenv").config();
 
 const createApp = () => {
   app.use(express.json());
