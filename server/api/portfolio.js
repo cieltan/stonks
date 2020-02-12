@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const Holdings = require("../db/models/holdings");
 
-router.get("/:userId", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
-    const { userId } = req.params;
-    const allHoldings = await Holdings.findAll({ where: { userId } });
+    const { id } = req.params;
+    const allHoldings = await Holdings.findAll({ where: { id } });
     res.json(allHoldings);
   } catch (error) {
     next(error);

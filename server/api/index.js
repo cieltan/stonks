@@ -3,7 +3,7 @@ const portfolio = require("./portfolio");
 const transaction = require("./transaction");
 
 router.use("/portfolio", portfolio);
-router.use("/transactions", transaction);
+router.use("/transaction", transaction);
 
 router.use((req, res, next) => {
   const error = new Error("Not Found");

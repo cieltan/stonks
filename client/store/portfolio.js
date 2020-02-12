@@ -14,9 +14,9 @@ const getPortfolio = payload => ({ type: GET_PORTFOLIO, payload });
 
 export const getPortfolioThunk = id => async dispatch => {
   try {
-    const portfolio = await axios.get(`/api/portfolio/${id}`);
-    console.log(portfolio);
-    dispatch(getPortfolio(portfolio));
+    const response = await axios.get(`/api/portfolio/${id}`);
+    const { data } = response;
+    dispatch(getPortfolio(data));
   } catch (error) {
     console.error(error);
   }
