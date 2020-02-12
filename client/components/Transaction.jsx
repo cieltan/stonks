@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "./Navbar";
 
-const Portfolio = () => {
+const Transaction = () => {
   return (
     <div>
       <Navbar />
-      Portfolio
+      Transactions!
     </div>
   );
 };
 
-export default Portfolio;
+export default Transaction;

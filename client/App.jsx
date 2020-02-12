@@ -1,10 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { LocationProvider, Router } from "@reach/router";
+import { LocationProvider } from "@reach/router";
 import store from "./store";
 import { history } from "./history";
 
-import Routes from "./routes/routes";
+import Routes from "./routes/Routes";
 
 const App = () => {
   return (

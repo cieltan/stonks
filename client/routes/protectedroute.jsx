@@ -15,6 +15,9 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, null)(ProtectedRoute);
 
+/**
+ * PROP TYPES
+ */
 ProtectedRoute.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   as: PropTypes.elementType.isRequired

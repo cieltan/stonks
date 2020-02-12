@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { Router } from "@reach/router";
 import { Login, Signup } from "../components/AuthForm";
 import Portfolio from "../components/Portfolio";
-import ProtectedRoute from "./protectedroute";
+import Transaction from "../components/Transaction";
+import ProtectedRoute from "./ProtectedRoute";
 import { me } from "../store";
 
 class Routes extends Component {
@@ -19,6 +20,7 @@ class Routes extends Component {
         <Signup path="/signup" />
         <Login path="/login" />
         <ProtectedRoute as={Portfolio} path="/" />
+        <ProtectedRoute as={Transaction} path="/transactions" />
       </Router>
     );
   }
@@ -40,11 +42,9 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routes);
 
+/**
+ * PROP TYPES
+ */
 Routes.propTypes = {
-  isLoggedIn: PropTypes.bool,
   loadInitialData: PropTypes.func.isRequired
-};
-
-Routes.defaultProps = {
-  isLoggedIn: false
 };
