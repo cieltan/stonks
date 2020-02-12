@@ -3,10 +3,22 @@ const Sequelize = require("sequelize");
 const db = require("../db");
 
 const User = db.define("user", {
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
+  },
+  balance: {
+    type: Sequelize.STRING,
+    defaultValue: "500000"
   },
   password: {
     type: Sequelize.STRING,
@@ -27,8 +39,9 @@ module.exports = User;
 /**
  * instanceMethods
  */
-User.prototype.correctPassword = function(candidatePwd) {
-  return User.encryptPassword(candidatePwd, this.salt()) === this.password();
+User.prototype.correctPassword = async function(candidatePwd) {
+  const match = await bcrypt.compare(candidatePwd, this.getSalt());
+  return match === this.password();
 };
 
 /**

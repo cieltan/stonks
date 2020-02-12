@@ -16,25 +16,29 @@ const AuthForm = props => {
         <div>
           {name === "signup" && (
             <div className="form--signup-name">
-              <label htmlFor="first-name">
+              <label htmlFor="firstName">
                 <p>First Name</p>
-                <input name="first-name" type="text" />
+                <input name="firstName" type="text" />
               </label>
-              <label htmlFor="last-name">
+              <label htmlFor="lastName">
                 <p>Last Name</p>
-                <input name="last-name" type="text" />
+                <input name="lastName" type="text" />
               </label>
             </div>
           )}
           <label htmlFor="email">
             <p>Email</p>
-            <input name="email" type="text" />
+            <input name="email" type="text" autoComplete="username" />
           </label>
         </div>
         <div>
           <label htmlFor="password">
             <p>Password</p>
-            <input name="password" type="password" />
+            <input
+              name="password"
+              type="password"
+              autoComplete="current-password"
+            />
           </label>
         </div>
         <div>
@@ -49,13 +53,6 @@ const AuthForm = props => {
   );
 };
 
-/**
- * CONTAINER
- *   Note that we have two different sets of 'mapStateToProps' functions -
- *   one for Login, and one for Signup. However, they share the same 'mapDispatchToProps'
- *   function, and share the same Component. This is a good example of how we
- *   can stay DRY with interfaces that are very similar to each other!
- */
 const mapLogin = state => {
   return {
     name: "login",
@@ -79,7 +76,7 @@ const mapDispatch = (dispatch, ownProps) => {
       const formName = evt.target.name;
       const email = evt.target.email.value;
       const password = evt.target.password.value;
-      if (ownProps.name === "signup") {
+      if (ownProps.path === "signup") {
         const firstName = evt.target.firstName.value;
         const lastName = evt.target.lastName.value;
         dispatch(auth(email, password, formName, firstName, lastName));
@@ -100,7 +97,7 @@ AuthForm.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.shape({ response: PropTypes.string })
+  error: PropTypes.shape({ response: PropTypes.object })
 };
 
 AuthForm.defaultProps = {
