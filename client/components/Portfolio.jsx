@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Navbar from "./Navbar";
 import { getPortfolioThunk } from "../store/portfolio";
+import TransactionForm from "./TransactionForm";
 
 class Portfolio extends Component {
   componentDidMount() {
@@ -11,10 +12,12 @@ class Portfolio extends Component {
   }
 
   render() {
+    const { balance } = this.props;
     return (
       <div>
         <Navbar />
-        Portfolio
+        {balance / 100}
+        <TransactionForm />
       </div>
     );
   }
@@ -22,6 +25,7 @@ class Portfolio extends Component {
 
 const mapStateToProps = state => {
   return {
+    balance: state.user.balance,
     id: state.user.id
   };
 };
@@ -40,6 +44,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);
  * PROP TYPES
  */
 Portfolio.propTypes = {
+  balance: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
   loadPortfolio: PropTypes.func.isRequired
 };

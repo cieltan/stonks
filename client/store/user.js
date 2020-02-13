@@ -6,6 +6,7 @@ import { navigate } from "../history";
  */
 const GET_USER = "GET_USER";
 const REMOVE_USER = "REMOVE_USER";
+const UPDATE_BALANCE = "UPDATE_BALANCE";
 
 /**
  * INITIAL STATE
@@ -17,6 +18,7 @@ const defaultUser = {};
  */
 const getUser = payload => ({ type: GET_USER, payload });
 const removeUser = () => ({ type: REMOVE_USER });
+export const updateBalance = payload => ({ type: UPDATE_BALANCE, payload });
 
 /**
  * THUNK CREATORS
@@ -76,6 +78,8 @@ export default function(state = defaultUser, action) {
       return action.payload;
     case REMOVE_USER:
       return defaultUser;
+    case UPDATE_BALANCE:
+      return { ...state, balance: action.payload };
     default:
       return state;
   }
