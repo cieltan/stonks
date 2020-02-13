@@ -16,9 +16,9 @@ class TransactionForm extends Component {
           <p>Stock</p>
           <input name="symbol" type="text" />
         </label>
-        <label htmlFor="quantity">
+        <label htmlFor="quant">
           <p>Quantity</p>
-          <input name="quantity" type="text" />
+          <input name="quant" type="text" />
         </label>
         <button type="submit">Buy</button>
       </form>
@@ -31,8 +31,8 @@ const mapDispatchToProps = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault();
       const symbol = evt.target.symbol.value;
-      const quantity = evt.target.quantity.value;
-      dispatch(buyTransactionsThunk({ symbol, quantity }));
+      const quant = evt.target.quant.value;
+      dispatch(buyTransactionsThunk({ symbol, quant }));
     }
   };
 };

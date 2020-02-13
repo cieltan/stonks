@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
-const { Holdings } = require("../db/models");
+const { Holding } = require("../db/models");
 
 const secret = process.env.ALPHA_SECRET;
 const baseURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE";
@@ -9,11 +9,11 @@ router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     // const allHoldings = await Holdings.findAll({ where: { id } });
-    const allHoldings = [
+    const allHolding = [
       { symbol: "AAPL", quantity: 1 },
       { symbol: "MSFT", quantity: 2 }
     ];
-    const updatedPrice = allHoldings.map(async stock => {
+    const updatedPrice = allHolding.map(async stock => {
       const { symbol } = stock;
       const { data } = await axios.get(
         `${baseURL}&symbol=${symbol}&apikey=${secret}`

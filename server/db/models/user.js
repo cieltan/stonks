@@ -33,7 +33,7 @@ const User = db.define("user", {
 module.exports = User;
 
 /**
- * instanceMethods
+ * InstanceMethods
  */
 User.prototype.correctPassword = async function(candidatePwd) {
   const match = await bcrypt.compare(candidatePwd, this.password());
@@ -41,7 +41,7 @@ User.prototype.correctPassword = async function(candidatePwd) {
 };
 
 /**
- * classMethods
+ * ClassMethods
  */
 
 User.encryptPassword = function(plainText, salt) {
@@ -49,7 +49,7 @@ User.encryptPassword = function(plainText, salt) {
 };
 
 /**
- * hooks
+ * Hooks
  */
 const setSaltAndPassword = async user => {
   const newUser = user;

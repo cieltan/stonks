@@ -1,15 +1,15 @@
 const User = require("./user");
-const Transactions = require("./transactions");
-const Holdings = require("./holdings");
+const Transaction = require("./transactions");
+const Holding = require("./holdings");
 
-Holdings.belongsTo(User);
-User.hasMany(Holdings);
+Holding.belongsTo(User);
+User.hasMany(Holding);
 
-Transactions.belongsTo(User);
-User.hasMany(Transactions);
+Transaction.belongsTo(User);
+User.hasMany(Transaction);
 
 module.exports = {
   User,
-  Transactions,
-  Holdings
+  Transaction,
+  Holding
 };

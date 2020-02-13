@@ -1,14 +1,17 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const Transactions = db.define("transactions", {
+const Transaction = db.define("transactions", {
   symbol: {
     type: Sequelize.STRING,
     allowNull: false
   },
   price: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      min: 0
+    }
   },
   action: {
     type: Sequelize.STRING,
@@ -23,4 +26,4 @@ const Transactions = db.define("transactions", {
   }
 });
 
-module.exports = Transactions;
+module.exports = Transaction;

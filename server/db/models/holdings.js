@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const Holdings = db.define("holdings", {
+const Holding = db.define("holdings", {
   symbol: {
     type: Sequelize.STRING,
     allowNull: false
@@ -15,4 +15,4 @@ const Holdings = db.define("holdings", {
   }
 });
 
-module.exports = Holdings;
+module.exports = Holding;
