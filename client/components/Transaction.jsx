@@ -16,7 +16,13 @@ class Transaction extends Component {
       <div>
         <Navbar />
         {transactions.map(transaction => {
-          return <div>Hello</div>;
+          return (
+            <div key={transaction.symbol + transaction.createdAt}>
+              {transaction.action}
+              {transaction.price / 100}
+              {transaction.symbol}
+            </div>
+          );
         })}
       </div>
     );

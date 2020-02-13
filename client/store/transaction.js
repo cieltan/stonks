@@ -30,8 +30,9 @@ export const buyTransactionsThunk = stock => async dispatch => {
   try {
     const response = await axios.post(`/api/transaction`, stock);
     const { data } = response;
-    dispatch(buyTransactions(data));
-    dispatch(updateBalance(data.balance));
+    const { user, newTransaction } = data;
+    dispatch(buyTransactions(newTransaction));
+    dispatch(updateBalance(user.balance));
   } catch (error) {
     console.error(error);
   }
