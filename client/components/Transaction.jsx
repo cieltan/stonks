@@ -11,10 +11,13 @@ class Transaction extends Component {
   }
 
   render() {
+    const { transactions } = this.props;
     return (
       <div>
         <Navbar />
-        Transactions!
+        {transactions.map(transaction => {
+          return <div>Hello</div>;
+        })}
       </div>
     );
   }
@@ -22,6 +25,7 @@ class Transaction extends Component {
 
 const mapStateToProps = state => {
   return {
+    transactions: state.transactions,
     id: state.user.id
   };
 };
@@ -40,6 +44,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Transaction);
  * PROP TYPES
  */
 Transaction.propTypes = {
+  transactions: PropTypes.instanceOf(Array).isRequired,
   id: PropTypes.number.isRequired,
   loadTransactions: PropTypes.func.isRequired
 };

@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const db = require("../db");
 
 const Holdings = db.define("holdings", {
-  ticker: {
+  symbol: {
     type: Sequelize.STRING,
     allowNull: false
   },
