@@ -1,40 +1,29 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { CssBaseline, Container } from "@material-ui/core";
-import {
-  MuiThemeProvider,
-  createMuiTheme,
-  withStyles
-} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import { LocationProvider } from "@reach/router";
 import store from "./store";
 import { history } from "./history";
 import Routes from "./routes/Routes";
 
-const theme = createMuiTheme({});
-
 const styles = () => ({
-  main: {
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  }
+  // main: {
+  //   padding: "0",
+  //   margin: "0"
+  // }
 });
 
 const App = props => {
   const { classes } = props;
   return (
-    <Container class={classes.main}>
-      <MuiThemeProvider theme={theme}>
-        <Provider store={store}>
-          <CssBaseline />
-          <LocationProvider history={history}>
-            <Routes />
-          </LocationProvider>
-        </Provider>
-      </MuiThemeProvider>
+    <Container maxWidth="xl" disableGutters="true" className={classes.main}>
+      <Provider store={store}>
+        <LocationProvider history={history}>
+          <Routes />
+        </LocationProvider>
+      </Provider>
     </Container>
   );
 };

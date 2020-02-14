@@ -12,6 +12,7 @@ import { auth } from "../store";
 const styles = () => ({
   "auth-form": {
     display: "flex",
+    height: "100vh",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
