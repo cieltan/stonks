@@ -12,11 +12,16 @@ class Portfolio extends Component {
   }
 
   render() {
-    const { balance } = this.props;
+    const { balance, portfolio } = this.props;
     return (
       <div>
         <Navbar />
         {balance / 100}
+        <div>
+          {portfolio.map(hold => {
+            return <div key={hold.symbol}>{hold.symbol}</div>;
+          })}
+        </div>
         <TransactionForm />
       </div>
     );
@@ -25,6 +30,7 @@ class Portfolio extends Component {
 
 const mapStateToProps = state => {
   return {
+    portfolio: state.portfolio,
     balance: state.user.balance,
     id: state.user.id
   };
@@ -44,6 +50,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);
  * PROP TYPES
  */
 Portfolio.propTypes = {
+  portfolio: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   balance: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
   loadPortfolio: PropTypes.func.isRequired

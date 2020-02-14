@@ -7,11 +7,16 @@ const Transaction = db.define("transactions", {
     allowNull: false
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL,
     allowNull: false,
     validate: {
       min: 0
     }
+  },
+  date: {
+    type: Sequelize.DATEONLY,
+    allowNull: false,
+    defaultValue: Sequelize.NOW
   },
   action: {
     type: Sequelize.STRING,

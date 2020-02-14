@@ -8,7 +8,7 @@ const GET_PORTFOLIO = "GET_PORTFOLIO";
 /**
  * INITIAL STATE
  */
-const defaultPortfolio = {};
+const defaultPortfolio = [];
 
 const getPortfolio = payload => ({ type: GET_PORTFOLIO, payload });
 

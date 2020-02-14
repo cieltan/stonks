@@ -18,9 +18,10 @@ class Transaction extends Component {
         {transactions.map(transaction => {
           return (
             <div key={transaction.symbol + transaction.createdAt}>
-              {transaction.action}
-              {transaction.price / 100}
-              {transaction.symbol}
+              <p>{`(${transaction.action})`}</p>
+              <p>{transaction.price / 100}</p>
+              <p>{transaction.symbol}</p>
+              <p>{transaction.date}</p>
             </div>
           );
         })}

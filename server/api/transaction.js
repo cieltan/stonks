@@ -27,7 +27,7 @@ router.post("/", async (req, res, next) => {
     /* Integer and non-number validation */
     if (!Number.isNaN(Number(quant)) && Number.isInteger(Number(quant))) {
       const { data } = await iex.get(`${symbol}/book`);
-      const cost = data.quote.latestPrice * 100 * quant;
+      const cost = data.quote.latestPrice.toFixed(2) * 100 * quant;
       const { id } = req.user.dataValues;
       const user = await User.findByPk(id);
       const { balance } = user;
@@ -39,7 +39,7 @@ router.post("/", async (req, res, next) => {
         const newTransaction = await Transaction.create({
           symbol,
           action: "BUY",
-          price: cost,
+          price: Number(cost),
           userId: id,
           quantity: quant
         });
