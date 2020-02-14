@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Redirect } from "@reach/router";
 
 const ProtectedRoute = ({ isLoggedIn, as: Comp }) => {
-  return isLoggedIn ? <Comp /> : <Redirect to="/login" noThrow />;
+  return isLoggedIn ? <Comp /> : <Redirect to="/signup" noThrow />;
 };
 
 const mapStateToProps = state => {

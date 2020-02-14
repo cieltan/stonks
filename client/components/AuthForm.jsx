@@ -72,7 +72,7 @@ const AuthForm = props => {
         {error && error.response && <div>{error.response.data}</div>}
       </form>
       <Link to={name === "login" ? "/signup" : "/login"}>
-        {name === "login" ? "Sign Up" : "Cancel"}
+        {name === "login" ? "Sign Up" : "Already a user? Log in."}
       </Link>
     </Container>
   );
