@@ -13,9 +13,15 @@ export const BUY_TRANSACTIONS = "BUY_TRANSACTIONS";
  */
 const defaultTransactions = [];
 
+/**
+ * ACTION CREATORS
+ */
 const getTransactions = payload => ({ type: GET_TRANSACTIONS, payload });
 const buyTransactions = payload => ({ type: BUY_TRANSACTIONS, payload });
 
+/**
+ * THUNK CREATORS
+ */
 export const getTransactionsThunk = id => async dispatch => {
   try {
     const response = await axios.get(`/api/transaction/${id}`);

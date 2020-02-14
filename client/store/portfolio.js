@@ -10,8 +10,14 @@ const GET_PORTFOLIO = "GET_PORTFOLIO";
  */
 const defaultPortfolio = [];
 
+/**
+ * ACTION CREATORS
+ */
 const getPortfolio = payload => ({ type: GET_PORTFOLIO, payload });
 
+/**
+ * THUNK CREATORS
+ */
 export const getPortfolioThunk = id => async dispatch => {
   try {
     const response = await axios.get(`/api/portfolio/${id}`);

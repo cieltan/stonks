@@ -39,6 +39,9 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(null, mapDispatchToProps)(TransactionForm);
 
+/**
+ * PROP TYPES
+ */
 TransactionForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
