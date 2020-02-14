@@ -61,10 +61,12 @@ const createApp = () => {
     res.sendFile(path.join(__dirname, "..", "public/index.html"));
   });
 
-  app.use((err, req, res) => {
-    console.error(err);
-    console.error(err.stack);
-    res.status(err.status || 500).send(err.message || "Internal server error.");
+  app.use((error, req, res) => {
+    console.error(error);
+    console.error(error.stack);
+    res
+      .status(error.status || 500)
+      .send(error.message || "Internal server error.");
   });
 };
 

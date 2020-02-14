@@ -27,8 +27,8 @@ export const me = () => async dispatch => {
   try {
     const res = await axios.get("/auth/me");
     dispatch(getUser(res.data || defaultUser));
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -54,8 +54,8 @@ export const auth = (
   try {
     dispatch(getUser(res.data));
     navigate("/");
-  } catch (dispatchOrHistoryErr) {
-    console.error(dispatchOrHistoryErr);
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -64,8 +64,8 @@ export const logoutThunk = () => async dispatch => {
     await axios.post("/auth/logout");
     dispatch(removeUser());
     navigate("/login");
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
   }
 };
 

@@ -7,9 +7,16 @@ import portfolio from "./portfolio";
 import transactions from "./transaction";
 
 const reducer = combineReducers({ user, portfolio, transactions });
-const middleware = composeWithDevTools(
-  applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
-);
+let middleware = [];
+
+if (process.env.NODE_ENV === "development") {
+  middleware = composeWithDevTools(
+    applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
+  );
+} else {
+  middleware = applyMiddleware(thunkMiddleware);
+}
+
 const store = createStore(reducer, middleware);
 
 export default store;
