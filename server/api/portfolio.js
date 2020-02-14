@@ -14,7 +14,6 @@ router.get("/:id", async (req, res, next) => {
       const { symbol, quantity } = stock;
       const { data } = await iex.get(`${symbol}/book`);
       let status = "same";
-      console.log(data);
       const { open } = data.quote;
       const price = data.quote.latestPrice;
       if (open > price) {
@@ -25,7 +24,6 @@ router.get("/:id", async (req, res, next) => {
       return { symbol, quantity, price, status };
     });
     const result = await Promise.all(updatedPrice);
-    console.log(result);
     res.json(result);
   } catch (error) {
     next(error);

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { updateBalance } from "./user";
+import { getPortfolioThunk } from "./portfolio";
 
 /**
  * ACTION TYPES
@@ -39,6 +40,7 @@ export const buyTransactionsThunk = stock => async dispatch => {
     const { user, newTransaction } = data;
     dispatch(buyTransactions(newTransaction));
     dispatch(updateBalance(user.balance));
+    dispatch(getPortfolioThunk(user.id));
   } catch (error) {
     console.error(error);
   }

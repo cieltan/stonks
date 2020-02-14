@@ -18,7 +18,7 @@ class TransactionForm extends Component {
         </label>
         <label htmlFor="quant">
           <p>Quantity</p>
-          <input name="quant" type="text" />
+          <input name="quant" type="number" />
         </label>
         <button type="submit">Buy</button>
       </form>
