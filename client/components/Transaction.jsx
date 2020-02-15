@@ -30,6 +30,7 @@ class Transaction extends Component {
               <TableRow>
                 <TableCell>Stock</TableCell>
                 <TableCell>Price</TableCell>
+                <TableCell>Shares</TableCell>
                 <TableCell>Action</TableCell>
                 <TableCell>Date</TableCell>
               </TableRow>
@@ -44,6 +45,7 @@ class Transaction extends Component {
                     <TableCell align="left">
                       {transaction.price / 100}
                     </TableCell>
+                    <TableCell align="left">{transaction.quantity}</TableCell>
                     <TableCell align="left">{`(${transaction.action})`}</TableCell>
                     <TableCell align="left">{transaction.date}</TableCell>
                   </TableRow>

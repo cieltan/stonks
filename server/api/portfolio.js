@@ -15,12 +15,13 @@ router.get("/:id", async (req, res, next) => {
       const { data } = await iex.get(`${symbol}/book`);
       let status = "same";
       const { open } = data.quote;
-      const price = data.quote.latestPrice;
+      let price = data.quote.latestPrice;
       if (open > price) {
         status = "bear";
       } else {
         status = "bull";
       }
+      price *= 100;
       return { symbol, quantity, price, status };
     });
     const result = await Promise.all(updatedPrice);
