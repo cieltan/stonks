@@ -9,16 +9,16 @@ import { history } from "./history";
 import Routes from "./routes/Routes";
 
 const styles = () => ({
-  // main: {
-  //   padding: "0",
-  //   margin: "0"
-  // }
+  main: {
+    height: "100vh"
+  }
 });
 
 const App = props => {
   const { classes } = props;
   return (
-    <Container maxWidth="xl" disableGutters="true" className={classes.main}>
+    <Container maxWidth="xl" className={classes.main}>
+      <CssBaseline />
       <Provider store={store}>
         <LocationProvider history={history}>
           <Routes />

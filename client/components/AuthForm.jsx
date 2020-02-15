@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
-import { TextField, Button, Container } from "@material-ui/core";
+import { TextField, Button, Card, Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { Link, Redirect } from "@reach/router";
 import { auth } from "../store";
@@ -10,9 +10,14 @@ import { auth } from "../store";
  * STYLES
  */
 const styles = () => ({
+  "auth-container": {
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
   "auth-form": {
     display: "flex",
-    height: "100vh",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
@@ -20,7 +25,7 @@ const styles = () => ({
   "auth-form__input": {
     margin: "10px"
   },
-  "auth-form__container": {
+  "auth-form__sheet": {
     display: "flex",
     flexDirection: "column"
   }
@@ -33,49 +38,51 @@ const AuthForm = props => {
   const { classes, isLoggedIn, name, displayName, handleSubmit, error } = props;
   if (isLoggedIn) return <Redirect to="/" noThrow />;
   return (
-    <Container className={classes["auth-form"]} maxWidth="sm">
-      <form
-        className={classes["auth-form__container"]}
-        onSubmit={handleSubmit}
-        name={name}
-      >
-        {name === "signup" && (
-          <>
-            <TextField
-              id="firstName"
-              label="First Name"
-              className={classes["auth-form__input"]}
-              required
-            />
-            <TextField
-              id="lastName"
-              label="Last Name"
-              className={classes["auth-form__input"]}
-              required
-            />
-          </>
-        )}
-        <TextField
-          id="email"
-          label="Email"
-          className={classes["auth-form__input"]}
-          required
-        />
-        <TextField
-          className={classes["auth-form__input"]}
-          id="password"
-          label="Password"
-          required
-        />
-        <Button type="submit" variant="contained" color="primary">
-          {displayName}
-        </Button>
-        {error && error.response && <div>{error.response.data}</div>}
-      </form>
-      <Link to={name === "login" ? "/signup" : "/login"}>
-        {name === "login" ? "Sign Up" : "Already a user? Log in."}
-      </Link>
-    </Container>
+    <Grid className={classes["auth-container"]}>
+      <Card className={classes["auth-form"]}>
+        <form
+          className={classes["auth-form__sheet"]}
+          onSubmit={handleSubmit}
+          name={name}
+        >
+          {name === "signup" && (
+            <>
+              <TextField
+                id="firstName"
+                label="First Name"
+                className={classes["auth-form__input"]}
+                required
+              />
+              <TextField
+                id="lastName"
+                label="Last Name"
+                className={classes["auth-form__input"]}
+                required
+              />
+            </>
+          )}
+          <TextField
+            id="email"
+            label="Email"
+            className={classes["auth-form__input"]}
+            required
+          />
+          <TextField
+            className={classes["auth-form__input"]}
+            id="password"
+            label="Password"
+            required
+          />
+          <Button type="submit" variant="contained" color="primary">
+            {displayName}
+          </Button>
+          {error && error.response && <div>{error.response.data}</div>}
+        </form>
+        <Link to={name === "login" ? "/signup" : "/login"}>
+          {name === "login" ? "Sign Up" : "Already a user? Log in."}
+        </Link>
+      </Card>
+    </Grid>
   );
 };
 
@@ -129,8 +136,9 @@ export const Signup = connect(
  */
 AuthForm.propTypes = {
   classes: PropTypes.shape({
+    "auth-container": PropTypes.string,
     "auth-form__input": PropTypes.string,
-    "auth-form__container": PropTypes.string,
+    "auth-form__sheet": PropTypes.string,
     "auth-form": PropTypes.string
   }).isRequired,
   name: PropTypes.string.isRequired,

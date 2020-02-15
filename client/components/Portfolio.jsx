@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { TableContainer, TableRow, Container, Card } from "@material-ui/core";
 import PropTypes from "prop-types";
 import Navbar from "./Navbar";
 import { getPortfolioThunk } from "../store/portfolio";
@@ -16,13 +17,20 @@ class Portfolio extends Component {
     return (
       <div>
         <Navbar />
-        {balance / 100}
-        <div>
-          {portfolio.map(hold => {
-            return <div key={hold.symbol}>{hold.symbol}</div>;
-          })}
-        </div>
-        <TransactionForm />
+        <Container>
+          <Card>
+            <p>
+              Current Balance:
+              {balance / 100}
+            </p>
+            <TableContainer>
+              {portfolio.map(hold => {
+                return <TableRow key={hold.symbol}>{hold.symbol}</TableRow>;
+              })}
+            </TableContainer>
+          </Card>
+          <TransactionForm />
+        </Container>
       </div>
     );
   }
