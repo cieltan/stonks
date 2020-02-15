@@ -1,11 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import {
-  CssBaseline,
-  Container,
-  createMuiTheme,
-  ThemeProvider
-} from "@material-ui/core";
+import { CssBaseline, Container } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import { LocationProvider } from "@reach/router";
