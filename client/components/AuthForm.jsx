@@ -12,11 +12,14 @@ import { auth } from "../store";
 const styles = () => ({
   "auth-container": {
     height: "100vh",
+    flexDirection: "column",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
   },
   "auth-form": {
+    height: "25rem",
+    width: "25rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -28,6 +31,9 @@ const styles = () => ({
   "auth-form__sheet": {
     display: "flex",
     flexDirection: "column"
+  },
+  "auth-form__link": {
+    padding: "10px"
   }
 });
 
@@ -38,8 +44,9 @@ const AuthForm = props => {
   const { classes, isLoggedIn, name, displayName, handleSubmit, error } = props;
   if (isLoggedIn) return <Redirect to="/" noThrow />;
   return (
-    <Grid className={classes["auth-container"]}>
+    <Grid container className={classes["auth-container"]}>
       <Card className={classes["auth-form"]}>
+        <h1>{name === "signup" ? "Register" : "Login"}</h1>
         <form
           className={classes["auth-form__sheet"]}
           onSubmit={handleSubmit}
@@ -78,10 +85,13 @@ const AuthForm = props => {
           </Button>
           {error && error.response && <div>{error.response.data}</div>}
         </form>
-        <Link to={name === "login" ? "/signup" : "/login"}>
-          {name === "login" ? "Sign Up" : "Already a user? Log in."}
-        </Link>
       </Card>
+      <Link
+        className={classes["auth-form__link"]}
+        to={name === "login" ? "/signup" : "/login"}
+      >
+        {name === "login" ? "Sign Up" : "Already a user? Log in."}
+      </Link>
     </Grid>
   );
 };
@@ -139,6 +149,7 @@ AuthForm.propTypes = {
     "auth-container": PropTypes.string,
     "auth-form__input": PropTypes.string,
     "auth-form__sheet": PropTypes.string,
+    "auth-form__link": PropTypes.string,
     "auth-form": PropTypes.string
   }).isRequired,
   name: PropTypes.string.isRequired,

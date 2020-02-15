@@ -13,6 +13,9 @@ import PropTypes from "prop-types";
 import Navbar from "./Navbar";
 import { getTransactionsThunk } from "../store/transaction";
 
+/**
+ * COMPONENT
+ */
 class Transaction extends Component {
   componentDidMount() {
     const { loadTransactions, id } = this.props;

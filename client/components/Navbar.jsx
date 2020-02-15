@@ -6,6 +6,9 @@ import { connect } from "react-redux";
 import { Link } from "@reach/router";
 import { logoutThunk } from "../store/user";
 
+/**
+ * STYLES
+ */
 const styles = () => ({
   menu: {
     display: "flex",
@@ -13,6 +16,9 @@ const styles = () => ({
   }
 });
 
+/**
+ * COMPONENT
+ */
 const Navbar = props => {
   const { logout, classes } = props;
   return (

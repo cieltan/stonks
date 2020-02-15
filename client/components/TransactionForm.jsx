@@ -4,12 +4,19 @@ import { TextField, Button, Card, Grid, withStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { buyTransactionsThunk } from "../store";
 
+/**
+ * STYLES
+ */
 const styles = () => ({
   "transaction-form": {
     display: "flex",
     flexDirection: "column"
   }
 });
+
+/**
+ * COMPONENT
+ */
 class TransactionForm extends Component {
   componentDidMount() {
     this.state = {};

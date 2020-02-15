@@ -18,6 +18,9 @@ import Navbar from "./Navbar";
 import { getPortfolioThunk } from "../store/portfolio";
 import TransactionForm from "./TransactionForm";
 
+/**
+ * STYLES
+ */
 const styles = () => ({
   "portfolio-grid": {
     display: "flex",
@@ -36,6 +39,9 @@ const styles = () => ({
   }
 });
 
+/**
+ * COMPONENT
+ */
 class Portfolio extends Component {
   componentDidMount() {
     const { loadPortfolio, id } = this.props;
