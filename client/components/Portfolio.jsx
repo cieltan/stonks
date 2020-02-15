@@ -21,7 +21,9 @@ import TransactionForm from "./TransactionForm";
 const styles = () => ({
   "portfolio-grid": {
     display: "flex",
-    height: "75vh"
+    height: "75vh",
+    justify: "space-around",
+    alignItems: "center"
   },
   "portfolio-stock--green": {
     color: "66BB6A"
@@ -53,13 +55,7 @@ class Portfolio extends Component {
     return (
       <div>
         <Navbar />
-        <Grid
-          className={classes["portfolio-grid"]}
-          container
-          justify="space-around"
-          alignItems="center"
-          spacing={5}
-        >
+        <Grid className={classes["portfolio-grid"]} container spacing={5}>
           <Grid item xs={6}>
             <Card>
               <h1>Portfolio (${this.calculate(portfolio)})</h1>
@@ -77,12 +73,16 @@ class Portfolio extends Component {
                     {portfolio.map(hold => {
                       const { status, quantity, symbol, price } = hold;
                       let color;
+                      let arrow;
                       if (status === "bull") {
                         color = classes["portfolio-stock--green"];
+                        arrow = String.fromCharCode(8593);
                       } else if (status === "bear") {
                         color = classes["portfolio-stock--red"];
+                        arrow = String.fromCharCode(8595);
                       } else {
                         color = classes["portfolio-stock--grey"];
+                        arrow = "";
                       }
                       return (
                         <TableRow key={hold.symbol}>
@@ -90,6 +90,7 @@ class Portfolio extends Component {
                             {symbol}
                           </TableCell>
                           <TableCell className={color} align="left">
+                            {arrow}
                             {(price * quantity) / 100}
                           </TableCell>
                           <TableCell align="left">{quantity}</TableCell>
@@ -135,7 +136,12 @@ export default connect(
  * PROP TYPES
  */
 Portfolio.propTypes = {
-  classes: PropTypes.shape({ "portfolio-grid": PropTypes.string }).isRequired,
+  classes: PropTypes.shape({
+    "portfolio-grid": PropTypes.string,
+    "portfolio-stock--green": PropTypes.string,
+    "portfolio-stock--grey": PropTypes.string,
+    "portfolio-stock--red": PropTypes.string
+  }).isRequired,
   portfolio: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   balance: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,

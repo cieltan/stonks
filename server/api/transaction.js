@@ -27,6 +27,7 @@ router.post("/", async (req, res, next) => {
     /* Integer and non-number validation */
     if (!Number.isNaN(Number(quant)) && Number.isInteger(Number(quant))) {
       const { data } = await iex.get(`${symbol}/book`);
+      console.log(data.quote);
       const cost = data.quote.latestPrice.toFixed(2) * 100 * quant;
       const { id } = req.user.dataValues;
       const user = await User.findByPk(id);
