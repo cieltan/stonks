@@ -22,7 +22,7 @@ const styles = () => ({
     width: "25rem",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     alignItems: "center"
   },
   "auth-form__input": {
@@ -34,6 +34,10 @@ const styles = () => ({
   },
   "auth-form__link": {
     padding: "10px"
+  },
+  "auth-form__button": {
+    marginTop: "1rem",
+    marginBottom: "2.5rem"
   }
 });
 
@@ -80,7 +84,12 @@ const AuthForm = props => {
             label="Password"
             required
           />
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            className={classes["auth-form__button"]}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
             {displayName}
           </Button>
           {error && error.response && <div>{error.response.data}</div>}
@@ -150,6 +159,7 @@ AuthForm.propTypes = {
     "auth-form__input": PropTypes.string,
     "auth-form__sheet": PropTypes.string,
     "auth-form__link": PropTypes.string,
+    "auth-form__button": PropTypes.string,
     "auth-form": PropTypes.string
   }).isRequired,
   name: PropTypes.string.isRequired,

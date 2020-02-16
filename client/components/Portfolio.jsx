@@ -9,10 +9,8 @@ import {
   TableHead,
   TableCell,
   TableBody,
-  withStyles,
-  makeStyles
+  withStyles
 } from "@material-ui/core";
-import { green, grey, red } from "@material-ui/core/colors/";
 import PropTypes from "prop-types";
 import Navbar from "./Navbar";
 import { getPortfolioThunk } from "../store/portfolio";
@@ -26,6 +24,11 @@ const styles = () => ({
     display: "flex",
     height: "75vh",
     justify: "space-around",
+    alignItems: "center"
+  },
+  "portfolio-card": {
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center"
   },
   "portfolio-stock--green": {
@@ -63,7 +66,7 @@ class Portfolio extends Component {
         <Navbar />
         <Grid className={classes["portfolio-grid"]} container spacing={5}>
           <Grid item xs={6}>
-            <Card>
+            <Card className={classes["portfolio-card"]}>
               <h1>Portfolio (${this.calculate(portfolio)})</h1>
               <h2>Current Balance: ${balance / 100}</h2>
               <TableContainer>
@@ -144,6 +147,7 @@ export default connect(
 Portfolio.propTypes = {
   classes: PropTypes.shape({
     "portfolio-grid": PropTypes.string,
+    "portfolio-card": PropTypes.string,
     "portfolio-stock--green": PropTypes.string,
     "portfolio-stock--grey": PropTypes.string,
     "portfolio-stock--red": PropTypes.string
