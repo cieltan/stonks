@@ -13,11 +13,18 @@ const styles = () => ({
     height: "100vh"
   },
   "@global": {
+    html: {
+      postion: "relative",
+      minHeight: "100%",
+      overflow: "hidden"
+    },
     body: {
+      height: "100%",
       backgroundImage: "url('./background.jpg')",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center center",
-      backgroundSize: "cover"
+      backgroundSize: "cover",
+      overflow: "auto"
     }
   }
 });
