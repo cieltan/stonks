@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { LocationProvider } from "@reach/router";
 import store from "./store";
 import { history } from "./history";
-import Routes from "./routes/Routes";
+import Routes from "./routes/routes";
 
 const styles = () => ({
   main: {

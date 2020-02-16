@@ -5,7 +5,7 @@ import { Router } from "@reach/router";
 import { Login, Signup } from "../components/AuthForm";
 import Portfolio from "../components/Portfolio";
 import Transaction from "../components/Transaction";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./protectedroute";
 import { me } from "../store";
 
 class Routes extends Component {
