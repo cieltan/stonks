@@ -7,11 +7,18 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  Paper
+  Paper,
+  withStyles
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 import Navbar from "./Navbar";
 import { getTransactionsThunk } from "../store/transaction";
+
+const styles = () => ({
+  "table-container": {
+    marginTop: "3rem"
+  }
+});
 
 /**
  * COMPONENT
@@ -23,11 +30,14 @@ class Transaction extends Component {
   }
 
   render() {
-    const { transactions } = this.props;
+    const { classes, transactions } = this.props;
     return (
       <div>
         <Navbar />
-        <TableContainer component={Paper}>
+        <TableContainer
+          className={classes["table-container"]}
+          component={Paper}
+        >
           <Table>
             <TableHead>
               <TableRow>
@@ -77,12 +87,18 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Transaction);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(Transaction));
 
 /**
  * PROP TYPES
  */
 Transaction.propTypes = {
+  classes: PropTypes.shape({
+    "table-container": PropTypes.string
+  }).isRequired,
   transactions: PropTypes.instanceOf(Array).isRequired,
   id: PropTypes.number.isRequired,
   loadTransactions: PropTypes.func.isRequired
