@@ -79,7 +79,8 @@ export default connect(
 TransactionForm.propTypes = {
   classes: PropTypes.shape({
     "transaction-form": PropTypes.string,
-    "transaction-grid": PropTypes.string
+    "transaction-grid": PropTypes.string,
+    "transaction-form__button": PropTypes.string
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired
 };

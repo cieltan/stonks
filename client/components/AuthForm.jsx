@@ -23,7 +23,7 @@ const styles = () => ({
     alignItems: "center"
   },
   "auth-form": {
-    height: "30rem",
+    height: "35rem",
     width: "25rem",
     display: "flex",
     flexDirection: "column",
@@ -98,8 +98,8 @@ const AuthForm = props => {
             >
               {displayName}
             </Button>
-            {error && error.response && <div>{error.response.data}</div>}
           </form>
+          {error && error.response && <div>{error.response.data}</div>}
         </Card>
         <Link
           className={classes["auth-form__link"]}
