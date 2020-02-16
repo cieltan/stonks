@@ -4,13 +4,15 @@ A full-stack stocks application.
 
 ## Installation
 
+Navigate to the project folder and install the required dependencies.
+
 ```
 npm install
 ```
 
 This project uses PostgresSQL for data persistence so after installing the node modules, be sure to create a db as well.
 
-With PSQL CLI
+If you have the psql command line installed, you can create the database with the following command:
 
 ```
 createdb stonks
