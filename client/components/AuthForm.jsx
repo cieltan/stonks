@@ -56,7 +56,7 @@ const AuthForm = props => {
     <Grid container className={classes["auth-container"]}>
       <Grid item className={classes["auth-container--item"]}>
         <Card className={classes["auth-form"]}>
-          <h1>{name === "signup" ? "Register" : "Login"}</h1>
+          <h1>{name === "signup" ? "Register" : "Login"} </h1>
           <form
             className={classes["auth-form__sheet"]}
             onSubmit={handleSubmit}
@@ -163,6 +163,7 @@ export const Signup = connect(
 AuthForm.propTypes = {
   classes: PropTypes.shape({
     "auth-container": PropTypes.string,
+    "auth-container--item": PropTypes.string,
     "auth-form__input": PropTypes.string,
     "auth-form__sheet": PropTypes.string,
     "auth-form__link": PropTypes.string,
