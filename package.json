@@ -6,6 +6,7 @@
   "scripts": {
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
+    "heroku-postbuild": "webpack -p",
     "serve": "webpack-dev-server",
     "start": "node server",
     "start-dev": "npm run build-client-watch & npm run start-server",
