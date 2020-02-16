@@ -31,7 +31,7 @@ const Navbar = props => {
           <Link to="/">Portfolio</Link>
         </Button>
         <Button>
-          <Link to="/login " onClick={logout}>
+          <Link to="/login" onClick={logout}>
             Logout
           </Link>
         </Button>

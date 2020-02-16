@@ -1,7 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
-import { TextField, Button, Card, Grid } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  Card,
+  Grid,
+  Link as StyleLink
+} from "@material-ui/core";
 import PropTypes from "prop-types";
 import { Link, Redirect } from "@reach/router";
 import { auth } from "../store";
@@ -100,13 +106,15 @@ const AuthForm = props => {
             </Button>
           </form>
           {error && error.response && <div>{error.response.data}</div>}
+          <StyleLink
+            component={Link}
+            color="primary"
+            className={classes["auth-form__link"]}
+            to={name === "login" ? "/signup" : "/login"}
+          >
+            {name === "login" ? "Sign Up" : "Already a user? Log in."}
+          </StyleLink>
         </Card>
-        <Link
-          className={classes["auth-form__link"]}
-          to={name === "login" ? "/signup" : "/login"}
-        >
-          {name === "login" ? "Sign Up" : "Already a user? Log in."}
-        </Link>
       </Grid>
     </Grid>
   );
