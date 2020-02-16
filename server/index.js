@@ -74,7 +74,7 @@ const startListening = () => {
   app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 };
 
-const syncDb = () => db.sync({ force: true });
+const syncDb = () => db.sync();
 
 async function startApp() {
   await createApp();

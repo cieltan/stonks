@@ -8,6 +8,9 @@ import Transaction from "../components/Transaction";
 import ProtectedRoute from "./protectedroute";
 import { me } from "../store";
 
+/**
+ * COMPONENT
+ */
 class Routes extends Component {
   componentDidMount() {
     const { loadInitialData } = this.props;

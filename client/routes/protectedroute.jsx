@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Redirect } from "@reach/router";
 
+/**
+ * COMPONENT
+ */
 const ProtectedRoute = ({ isLoggedIn, as: Comp }) => {
   return isLoggedIn ? <Comp /> : <Redirect to="/login" noThrow />;
 };
