@@ -11,6 +11,14 @@ import Routes from "./routes/routes";
 const styles = () => ({
   main: {
     height: "100vh"
+  },
+  "@global": {
+    body: {
+      backgroundImage: "url('./background.jpg')",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center center",
+      backgroundSize: "cover"
+    }
   }
 });
 

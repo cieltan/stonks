@@ -22,7 +22,7 @@ const styles = () => ({
 const Navbar = props => {
   const { logout, classes } = props;
   return (
-    <AppBar color="transparent" position="static">
+    <AppBar color="default" position="static">
       <Toolbar className={classes.menu}>
         <Button color="inherit">
           <Link to="/transactions">Transactions</Link>
