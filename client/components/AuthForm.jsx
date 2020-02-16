@@ -13,27 +13,32 @@ const styles = () => ({
   "auth-container": {
     height: "100vh",
     flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  "auth-container--item": {
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
   },
   "auth-form": {
-    height: "25rem",
+    height: "30rem",
     width: "25rem",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     alignItems: "center"
   },
   "auth-form__input": {
-    margin: "10px"
+    margin: "1rem"
   },
   "auth-form__sheet": {
     display: "flex",
     flexDirection: "column"
   },
   "auth-form__link": {
-    padding: "10px"
+    padding: "1rem"
   },
   "auth-form__button": {
     marginTop: "1rem",
@@ -49,58 +54,60 @@ const AuthForm = props => {
   if (isLoggedIn) return <Redirect to="/" noThrow />;
   return (
     <Grid container className={classes["auth-container"]}>
-      <Card className={classes["auth-form"]}>
-        <h1>{name === "signup" ? "Register" : "Login"}</h1>
-        <form
-          className={classes["auth-form__sheet"]}
-          onSubmit={handleSubmit}
-          name={name}
-        >
-          {name === "signup" && (
-            <>
-              <TextField
-                id="firstName"
-                label="First Name"
-                className={classes["auth-form__input"]}
-                required
-              />
-              <TextField
-                id="lastName"
-                label="Last Name"
-                className={classes["auth-form__input"]}
-                required
-              />
-            </>
-          )}
-          <TextField
-            id="email"
-            label="Email"
-            className={classes["auth-form__input"]}
-            required
-          />
-          <TextField
-            className={classes["auth-form__input"]}
-            id="password"
-            label="Password"
-            required
-          />
-          <Button
-            className={classes["auth-form__button"]}
-            type="submit"
-            variant="contained"
-            color="primary"
+      <Grid item className={classes["auth-container--item"]}>
+        <Card className={classes["auth-form"]}>
+          <h1>{name === "signup" ? "Register" : "Login"}</h1>
+          <form
+            className={classes["auth-form__sheet"]}
+            onSubmit={handleSubmit}
+            name={name}
           >
-            {displayName}
-          </Button>
-          {error && error.response && <div>{error.response.data}</div>}
-        </form>
-      </Card>
-      <Link
-        className={classes["auth-form__link"]}
-        to={name === "login" ? "/signup" : "/login"}
-      >
-        {name === "login" ? "Sign Up" : "Already a user? Log in."}
-      </Link>
+            {name === "signup" && (
+              <>
+                <TextField
+                  id="firstName"
+                  label="First Name"
+                  className={classes["auth-form__input"]}
+                  required
+                />
+                <TextField
+                  id="lastName"
+                  label="Last Name"
+                  className={classes["auth-form__input"]}
+                  required
+                />
+              </>
+            )}
+            <TextField
+              id="email"
+              label="Email"
+              className={classes["auth-form__input"]}
+              required
+            />
+            <TextField
+              className={classes["auth-form__input"]}
+              id="password"
+              label="Password"
+              required
+            />
+            <Button
+              className={classes["auth-form__button"]}
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              {displayName}
+            </Button>
+            {error && error.response && <div>{error.response.data}</div>}
+          </form>
+        </Card>
+        <Link
+          className={classes["auth-form__link"]}
+          to={name === "login" ? "/signup" : "/login"}
+        >
+          {name === "login" ? "Sign Up" : "Already a user? Log in."}
+        </Link>
+      </Grid>
     </Grid>
   );
 };
