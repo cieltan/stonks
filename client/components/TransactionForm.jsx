@@ -11,6 +11,12 @@ const styles = () => ({
   "transaction-form": {
     display: "flex",
     flexDirection: "column"
+  },
+  "transaction-grid": {
+    height: "50vh"
+  },
+  "transaction-form__button": {
+    marginTop: "2rem"
   }
 });
 
@@ -26,12 +32,24 @@ class TransactionForm extends Component {
     const { handleSubmit, classes } = this.props;
     return (
       <Card>
-        <Grid container direction="column">
+        <Grid
+          className={classes["transaction-grid"]}
+          container
+          direction="column"
+          alignItems="center"
+        >
           <h1>Buy Form</h1>
           <form className={classes["transaction-form"]} onSubmit={handleSubmit}>
             <TextField id="symbol" label="Symbol" required />
             <TextField id="quant" label="Quantity" required />
-            <Button type="submit">Buy</Button>
+            <Button
+              className={classes["transaction-form__button"]}
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              Buy
+            </Button>
           </form>
         </Grid>
       </Card>
@@ -60,7 +78,8 @@ export default connect(
  */
 TransactionForm.propTypes = {
   classes: PropTypes.shape({
-    "transaction-form": PropTypes.string
+    "transaction-form": PropTypes.string,
+    "transaction-grid": PropTypes.string
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired
 };
