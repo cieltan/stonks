@@ -24,14 +24,14 @@ const Navbar = props => {
   return (
     <AppBar color="default" position="static">
       <Toolbar className={classes.menu}>
-        <Button color="inherit">
+        <Button color="primary">
           <Link to="/transactions">Transactions</Link>
         </Button>
-        <Button>
+        <Button color="primary">
           <Link to="/">Portfolio</Link>
         </Button>
-        <Button>
-          <Link to="/login" onClick={logout}>
+        <Button color="primary">
+          <Link to="/login " onClick={logout}>
             Logout
           </Link>
         </Button>
