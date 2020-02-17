@@ -15,7 +15,8 @@ router.get("/:id", async (req, res, next) => {
       const { data } = await iex.get(`${symbol}/book`);
       let status = "same";
       const { open } = data.quote;
-      let price = data.quote.latestPrice;
+      let price = data.quote.latestPrice.toFixed(2);
+      console.log(price);
       if (open > price) {
         status = "bear";
       } else {

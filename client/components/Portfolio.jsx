@@ -56,7 +56,7 @@ class Portfolio extends Component {
       (acc, curr) => acc + curr.price * curr.quantity,
       0
     );
-    return result / 100;
+    return (result / 100).toFixed(2);
   };
 
   render() {
@@ -101,7 +101,7 @@ class Portfolio extends Component {
                           </TableCell>
                           <TableCell className={color} align="left">
                             {arrow}
-                            {(price * quantity) / 100}
+                            {((price * quantity) / 100).toFixed(2)}
                           </TableCell>
                           <TableCell className={color} align="left">
                             {price / 100}
