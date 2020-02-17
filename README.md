@@ -26,6 +26,11 @@ Once that is completed, all you have to do is start the back-end Express server 
 npm run start-dev
 ```
 
+## Preview
+
+<img src="/public/resources/login.png" width="90%" height="90%">
+<img src="/public/resources/transactions.png" width="90%" height="90%">
+
 ## Technologies
 
 ### Front-end
