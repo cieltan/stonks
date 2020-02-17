@@ -25,3 +25,18 @@ Once that is completed, all you have to do is start the back-end Express server 
 ```
 npm run start-dev
 ```
+
+## Technologies
+
+### Front-end
+
+- React
+- Redux
+- Reach Router
+- MaterialUI
+
+### Back-end
+
+- Node/Express
+- PostgresSQL
+- Sequelize ORM
