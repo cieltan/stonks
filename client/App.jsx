@@ -29,6 +29,9 @@ const styles = () => ({
   }
 });
 
+/**
+ * COMPONENT
+ */
 const App = props => {
   const { classes } = props;
   return (

@@ -45,3 +45,4 @@ npm run start-dev
 - Node/Express
 - PostgresSQL
 - Sequelize ORM
+- IEX API

@@ -74,7 +74,8 @@ class Portfolio extends Component {
                   <TableHead>
                     <TableRow>
                       <TableCell>Stock</TableCell>
-                      <TableCell>Price</TableCell>
+                      <TableCell>Total Value</TableCell>
+                      <TableCell>Current Price</TableCell>
                       <TableCell># of Shares</TableCell>
                     </TableRow>
                   </TableHead>
@@ -101,6 +102,9 @@ class Portfolio extends Component {
                           <TableCell className={color} align="left">
                             {arrow}
                             {(price * quantity) / 100}
+                          </TableCell>
+                          <TableCell className={color} align="left">
+                            {price / 100}
                           </TableCell>
                           <TableCell align="left">{quantity}</TableCell>
                         </TableRow>
