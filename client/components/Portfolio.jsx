@@ -32,7 +32,7 @@ const styles = () => ({
     alignItems: "center"
   },
   "portfolio-stock--green": {
-    color: "66BB6A"
+    color: "#66BB6A"
   },
   "portfolio-stock--red": {
     color: "#FF1744"
